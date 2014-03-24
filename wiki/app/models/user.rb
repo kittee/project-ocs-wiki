@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   validates :lname, :presence => true
   validates :username, :uniqueness => true
   
+  def name
+    fname + " " + lname
+  end
+  
 end
