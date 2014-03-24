@@ -1,0 +1,6 @@
+<h1>Updates</h1>
+
+<% @updates.each do |update| %>
+  <p><%= update.id %> -- 
+    <%= link_to(update.article.title, article_path(update.article.id)) %></p>
+<% end %>
