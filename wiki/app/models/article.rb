@@ -5,8 +5,6 @@ class Article < ActiveRecord::Base
   has_many :updates
   
   validates :title, :uniqueness => true
-  
-  def to_param
-    title
-  end
+  validates :title, :presence => true
+  validates :title, :format => { :with => /^[a-zA-Z0-9 ]+$/ }
 end
