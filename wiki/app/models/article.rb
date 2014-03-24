@@ -5,4 +5,8 @@ class Article < ActiveRecord::Base
   has_many :updates
   
   validates :title, :uniqueness => true
+  
+  def to_param
+    title
+  end
 end
