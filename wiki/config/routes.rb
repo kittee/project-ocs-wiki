@@ -1,5 +1,5 @@
 Wiki::Application.routes.draw do
-  resources :articles, param: :title
+  resources :articles
   resources :updates
   
   # The priority is based upon order of creation:
