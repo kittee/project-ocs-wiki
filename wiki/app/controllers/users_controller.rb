@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_username(params[:id])
   end
 
   def new
@@ -33,6 +33,6 @@ class UsersController < ApplicationController
     @user.update_attributes(params[:user])
     
     redirect_to(:root)
-  end  
+  end
 
 end

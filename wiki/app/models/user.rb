@@ -9,9 +9,15 @@ class User < ActiveRecord::Base
   validates :fname, :presence => true
   validates :lname, :presence => true
   validates :username, :uniqueness => true
-  
+  validates :username, :format => { :with => /^[a-zA-Z0-9_]+$/ }
   def name
     fname + " " + lname
+  end
+  
+
+  
+  def to_params
+    username
   end
   
 end
