@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find(params[:id])
-    @content = @article.updates.last
+    @content = @article.updates.last.content
   end
   
   def update
