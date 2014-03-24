@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true
   validates :fname, :presence => true
   validates :lname, :presence => true
-  validates :username, :uniqueness => true
-  validates :username, :format => { :with => /^[a-zA-Z0-9_]+$/ }
+  validates :username, :uniqueness => true, :format => { :with => /^[a-zA-Z0-9_]+$/ }
   def name
     fname + " " + lname
   end
