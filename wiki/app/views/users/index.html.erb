@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
   <p>
-    <a href = "/users/<%= user.username %>"><%= user.name %></a>
+    <%= link_to(user.name, user_path(user.id)) %> 
   </p>
 <% end %>

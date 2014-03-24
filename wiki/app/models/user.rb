@@ -13,11 +13,5 @@ class User < ActiveRecord::Base
   def name
     fname + " " + lname
   end
-  
-
-  
-  def to_params
-    username
-  end
-  
+    
 end
