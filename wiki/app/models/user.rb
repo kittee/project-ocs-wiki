@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  attr_accessible :fname, :lname, :email, :username, :password_digest, :admin
+  attr_accessible :fname, :lname, :email, :username, :password, :password_confirmation
   
   has_many :updates
   
