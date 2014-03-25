@@ -1,3 +1,26 @@
 <h1>Create New Article</h1>
 
-<%= render :partial => "form" %>
+<% if @article.errors.any? || @update.errors.any? %>
+  <% @article.errors.full_messages.each do |error_msg| %>
+    <p id="error"><%= error_msg %></p>
+  <% end %>
+  <% @update.errors.full_messages.each do |error_msg| %>
+    <p id="error"><%= error_msg %></p>
+  <% end %>
+<% end %>
+
+<%= form_tag articles_path do %>     #defaults to post
+     <p>
+          <%= label_tag :title %>
+          <%= text_field_tag(:title, @article.title) %>
+     </p>
+     <p>
+          <%= label_tag :user_id %>
+          <%= text_field_tag(:user_id, @update.user_id) %>
+     </p>
+     <p>
+          <%= label_tag :content %>
+          <%= text_area_tag(:content, @update.content) %>
+     </p>
+     <%= submit_tag "Create Article"%>
+<% end %>
