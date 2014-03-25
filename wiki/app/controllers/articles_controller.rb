@@ -32,12 +32,11 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    @new_article = Article.find(params[:id])
+    @article = Article.find(params[:id])
     
-    if @new_article.update_attributes(params[:article])
+    if @article.update_attributes(params[:article])
       redirect_to(article_path(params[:id]))
     else
-      @article = Article.find(params[:id])
       render :edit
     end
   end
