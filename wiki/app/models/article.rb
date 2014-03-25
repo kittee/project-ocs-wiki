@@ -1,4 +1,7 @@
 class Article < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   attr_accessible :title, :updates_attributes
   
   has_and_belongs_to_many :categories
