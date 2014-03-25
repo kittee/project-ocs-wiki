@@ -1,26 +1,25 @@
 <h1>Create New Article</h1>
 
-<% if @article.errors.any? || @update.errors.any? %>
+<% if @article.errors.any? %>
   <% @article.errors.full_messages.each do |error_msg| %>
-    <p id="error"><%= error_msg %></p>
-  <% end %>
-  <% @update.errors.full_messages.each do |error_msg| %>
     <p id="error"><%= error_msg %></p>
   <% end %>
 <% end %>
 
-<%= form_tag articles_path do %>
-     <p>
-          <%= label_tag :title %>
-          <%= text_field_tag(:title, @article.title) %>
-     </p>
-     <p>
-          <%= label_tag :user_id %>
-          <%= text_field_tag(:user_id, @update.user_id) %>
-     </p>
-     <p>
-          <%= label_tag :content %>
-          <%= text_area_tag(:content, @update.content) %>
-     </p>
-     <%= submit_tag "Create Article"%>
+<%= form_for @article do |article| %>
+  <p>
+    <%= article.label :title %>
+    <%= article.text_field :title %>
+  </p>
+  <%= article.fields_for :updates do |update| %>
+    <p>
+      <%= update.label :user_id %>
+      <%= update.number_field :user_id %>
+    </p>
+    <p>
+      <%= update.label :content %>
+      <%= update.text_area :content%>
+    </p>
+  <% end %>
+  <%= article.submit %>
 <% end %>
