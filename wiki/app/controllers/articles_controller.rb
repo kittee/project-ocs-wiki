@@ -7,17 +7,12 @@ class ArticlesController < ApplicationController
     @article = Article.new({:title => params[:title]})
     @update = Update.new({:article_id => nil, :user_id => params[:user_id].to_i, :content => params[:content]})
     
-    if @article.valid?
+    if ([@article, @update].map(&:valid?)).all?
+      @article.save
       @update.article_id = @article.id
-      if @update.valid?
-        @article.save
-        @update.save
-        redirect_to(article_path(@article.id))
-      else
-        render :new
-      end
+      @update.save
+      redirect_to(article_path(@article.id))
     else
-      @update.valid?
       render :new
     end
   end
