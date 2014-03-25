@@ -5,18 +5,17 @@ class ArticlesController < ApplicationController
   
   def create
     @article = Article.new({:title => params[:title]})
-    @update = Update.new({:article_id => nil,
-      :user_id => params[:user_id].to_i,
-      :content => params[:content]})
+    @update = Update.new({:article_id => nil, :user_id => params[:user_id].to_i, :content => params[:content]})
     
-    if @article.save
-        @update.article_id = @article.id
-        if @update.save
-          redirect_to(article_path(@article.id))
-        else
-          Article.delete(@article.id)
-          render :new
-        end
+    if @article.valid?
+      @update.article_id = @article.id
+      if @update.valid?
+        @article.save
+        @update.save
+        redirect_to(article_path(@article.id))
+      else
+        render :new
+      end
     else
       @update.valid?
       render :new
