@@ -21,6 +21,7 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find(params[:id])
+    @update = @article.updates.last.dup
   end
   
   def show
