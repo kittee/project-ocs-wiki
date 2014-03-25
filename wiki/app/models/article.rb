@@ -1,8 +1,9 @@
 class Article < ActiveRecord::Base
-  attr_accessible :title
+  attr_accessible :title, :updates_attributes
   
   has_and_belongs_to_many :categories
   has_many :updates
+  accepts_nested_attributes_for :updates
   
   validates :title, :uniqueness => true
   validates :title, :presence => true
