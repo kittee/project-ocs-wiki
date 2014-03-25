@@ -1,6 +1,5 @@
 Wiki::Application.routes.draw do
   resources :articles
-  resources :updates
   resources :users
   resources :logins
   # The priority is based upon order of creation:
