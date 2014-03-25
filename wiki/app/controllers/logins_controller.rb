@@ -9,7 +9,7 @@ class LoginsController < ApplicationController
       session[:user_id] = user.id # <-- That is what a "log in" is.
       redirect_to :root
     else
-      raise "Login Failed."
+      redirect_to("/logins/new?invalid_password=true&email=#{params[:email]}")
     end
   end
   

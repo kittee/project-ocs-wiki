@@ -1,4 +1,6 @@
 class UpdatesController < ApplicationController
+  before_filter :authorize
+  
   def index
     @updates = Update.all
   end

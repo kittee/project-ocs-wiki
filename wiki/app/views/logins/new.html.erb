@@ -1,3 +1,6 @@
+<% if params[:invalid_password] == "true" %>
+  <p>Invalid password for email address <%= params[:email] %></p>
+<% end %>
 <h1>Log In</h1>
 
 <%# This is just a plan-ol' HTML form maker: %>
