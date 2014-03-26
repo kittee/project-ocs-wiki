@@ -119,6 +119,21 @@ a:hover, a:active, a:focus {
   margin: 0;
 }
 
+#user_status {
+  float:left;
+}
+
+#search_nav {
+  float:right;
+}
+
+#search_nav input{
+  position:relative;
+  top: -8px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
 #left_column, #right_column {
   padding: 25px;
   border-radius: 25px;
