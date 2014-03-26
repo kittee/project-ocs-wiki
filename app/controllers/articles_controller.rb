@@ -25,6 +25,13 @@ class ArticlesController < ApplicationController
   def edit
     authorize
     @article = Article.find(params[:id])
+    
+    if @article.locked && !current_user.admin
+      @content = @article.updates.last.content
+      @error="Article is locked. You cannot edit at this time."
+      render :show
+    end
+    
     @update = @article.updates.last.dup
   end
   

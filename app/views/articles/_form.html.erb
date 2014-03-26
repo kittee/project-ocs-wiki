@@ -9,6 +9,12 @@
     <%= article.label :title %>
     <%= article.text_field :title %>
   </p>
+  <% if current_user.admin %>
+    <p>
+      <%= article.label :locked %>
+      <%= article.check_box :locked %>
+    </p>
+  <% end %>
   <p>
     <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
