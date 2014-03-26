@@ -46,6 +46,6 @@ andy = User.create(
   password_confirmation: "andy"
 )
 
-cara.update_attribute(:admin, true)
-matt.update_attribute(:admin, true)
-andy.update_attribute(:admin, true)
+cara.update_attribute(:admin, "true")
+matt.update_attribute(:admin, "true")
+andy.update_attribute(:admin, "true")
