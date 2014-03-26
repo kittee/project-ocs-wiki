@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   
   def admin
     if !current_user.admin
-      redirect_to articles
+      redirect_to :articles
     end
   end
   

@@ -44,6 +44,14 @@ class ArticlesController < ApplicationController
     end
   end
   
+  def rollback
+    # raise(params.to_s)
+    authorize
+    admin
+    update = Update.create({:article_id => params[:id], :user_id => current_user.id, :content => params[:update][:update]})
+    redirect_to(article_path(params[:id]))
+  end
+  
   def destroy
     authorize
     admin
