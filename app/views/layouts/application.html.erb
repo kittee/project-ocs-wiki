@@ -17,15 +17,23 @@
     
     <div id="content" class="clearfix">
       <div id="top_nav">
-        <% if current_user %>
-          <p>Welcome, <%= current_user.email %>! |
-          <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
-        <% else %>
-          <p>
-            <%= link_to("Sign Up", :new_user) %> | 
-            <%= link_to("Log In", :new_login) %>
-          </p>
-        <% end %>
+        <div id="user_status">
+          <% if current_user %>
+            <p>Welcome, <%= current_user.email %>! |
+            <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
+          <% else %>
+            <p>
+              <%= link_to("Sign Up", :new_user) %> | 
+              <%= link_to("Log In", :new_login) %>
+            </p>
+          <% end %>
+        </div>
+        <div id="search_nav">
+          <form name="search" action="/articles" method="get">
+            <%= text_field_tag 'search', nil, placeholder: 'Enter search term...' %>
+            <input type="submit" value="GO!">
+          </form>
+        </div>
       </div>
       
       <div id="left_column">
