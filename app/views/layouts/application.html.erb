@@ -20,11 +20,13 @@
         <div id="user_status">
           <% if current_user %>
             <p>Welcome, <%= current_user.email %>! |
-            <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
+            <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %> |
+          <%= link_to("Create New Article", :new_article) %>
+          </p>
           <% else %>
             <p>
               <%= link_to("Sign Up", :new_user) %> | 
-              <%= link_to("Log In", :new_login) %>
+              <%= link_to("Log In", :new_login) %> |
             </p>
           <% end %>
         </div>

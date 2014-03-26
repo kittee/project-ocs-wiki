@@ -1,4 +1,5 @@
 <h1><%= @user.name %></h1>
-
-<%= link_to("Edit User Info", edit_user_path(@user.username)) %> | 
-<%= link_to("Delete User", user_path(@user.username), :method => :delete) %>
+<% if current_user.username == params[:id] || current_user.admin %>
+  <%= link_to("Edit User Info", edit_user_path(@user.username)) %> | 
+  <%= link_to("Deactive User", user_path(@user.username), :method => :deactivate) %>
+<% end %>
