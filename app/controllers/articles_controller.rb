@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   
   def index
-    @articles = Article.all
+    if params[:search] != nil && params[:search].size > 0
+      @articles = Article.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @articles = Article.all
+    end
   end
   
   def create

@@ -11,21 +11,29 @@
 <div id="container">
 
   <div id="header">
-    <img src="/assets/layout/OCS_star_75x75.png" width="75px" height="75px" alt="Omaha Code School Star" />
-    <h1>Omaha <span style="font-family: Signika-Semibold, sans-serif;">Code</span> School Wiki</h1>
+    <a href="/"><img src="/assets/layout/OCS_star_75x75.png" width="75px" height="75px" alt="Omaha Code School Star" />
+    <h1>Omaha <span style="font-family: Signika-Semibold, sans-serif;">Code</span> School Wiki</h1></a>
   </div>
     
     <div id="content" class="clearfix">
       <div id="top_nav">
-        <% if current_user %>
-          <p>Welcome, <%= current_user.email %>! |
-          <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
-        <% else %>
-          <p>
-            <%= link_to("Sign Up", :new_user) %> | 
-            <%= link_to("Log In", :new_login) %>
-          </p>
-        <% end %>
+        <div id="user_status">
+          <% if current_user %>
+            <p>Welcome, <%= current_user.email %>! |
+            <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
+          <% else %>
+            <p>
+              <%= link_to("Sign Up", :new_user) %> | 
+              <%= link_to("Log In", :new_login) %>
+            </p>
+          <% end %>
+        </div>
+        <div id="search_nav">
+          <form name="search" action="/articles" method="get">
+            <%= text_field_tag 'search', nil, placeholder: 'Enter search term...' %>
+            <input type="submit" value="GO!">
+          </form>
+        </div>
       </div>
       
       <div id="left_column">
@@ -48,7 +56,8 @@
         <%= yield %>
       </div>
     </div>
-    
+  <div id="footer_above"></div>
+  
   <div id="footer">
     <p>Created by Cara Heacock, Matt Hova, and Andy von Dohren as a project for Omaha Code School.<br />
 The Omaha Code School Wiki is not officially affiliated with Omaha Code School other than the developers being students there.</p>
