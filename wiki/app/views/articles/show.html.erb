@@ -5,5 +5,11 @@
   <% end %>
 </h3>
 <p><%= markdown(@content) %></p>
-<p><%= link_to("Edit", edit_article_path(@article.id)) %> | 
-  <%= link_to("Delete", article_path(@article.id), :method => :delete) %></p>
+<% if current_user %>
+  <p>
+    <%= link_to("Edit", edit_article_path(@article.id)) %>
+    <% if current_user.admin %>
+    | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
+    <% end %>
+  </p>
+<% end %>

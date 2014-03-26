@@ -14,10 +14,7 @@
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
   </p>
   <%= article.fields_for :updates, @update do |update| %>
-    <p>
-      <%= update.label :user_id %>
-      <%= update.number_field :user_id %>
-    </p>
+    <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>
     <p>
       <%= update.label :content %>
       <%= update.text_area :content%>
