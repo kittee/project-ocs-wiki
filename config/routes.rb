@@ -2,6 +2,7 @@ Wiki::Application.routes.draw do
   resources :articles
   resources :users
   resources :logins
+  post '/articles/:id/rollback', to: 'articles#rollback', as: 'rollback_article' 
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
