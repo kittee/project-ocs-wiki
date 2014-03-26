@@ -1,4 +1,9 @@
 <h1><%= @article.title %></h1>
+<h3>Categories: 
+  <% @article.categories.each do |cat| %>
+    <%= cat.name %>
+  <% end %>
+</h3>
 <p><%= markdown(@content) %></p>
 <% if current_user %>
   <p>

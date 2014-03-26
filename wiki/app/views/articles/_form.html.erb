@@ -9,6 +9,10 @@
     <%= article.label :title %>
     <%= article.text_field :title %>
   </p>
+  <p>
+    <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
+    {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
+  </p>
   <%= article.fields_for :updates, @update do |update| %>
     <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>
     <p>
