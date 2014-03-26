@@ -1,19 +1,20 @@
 /* Body stuff */
 
-body {
+html, body {
   margin: 0;
+  height: 100%;
 }
 
 /* General font stuff */
 
 @font-face {
 	font-family: Signika-Light;
-	src: url(fonts/Signika-Light.otf);
+	src: url('Signika-Light.otf');
 }
 
 @font-face {
 	font-family: Signika-Semibold;
-	src: url(fonts/Signika-Light.otf);
+	src: url('Signika-Semibold.otf');
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -74,11 +75,13 @@ a:hover, a:active, a:focus {
 /* Layout stuff */
 
 #container {
+  min-height: 100%;
   width: 900px;
   margin: 0 auto;
   background-image: url('layout/OCS_star_400x400.png');
   background-repeat: no-repeat;
   background-position: 75px 200px;
+  position: relative;
 }
 
 #header {
@@ -101,11 +104,16 @@ a:hover, a:active, a:focus {
   font-family: Signika-Light, sans-serif;
 }
 
+#header a {
+  text-decoration: none;
+}
+
 #content {
   background-color: rgba(139, 194, 228, 0.2);
   border-radius: 25px;
   padding: 25px;
   margin: 40px 0;
+  margin-bottom: 100px;
 }
 
 #top_nav {
@@ -117,6 +125,21 @@ a:hover, a:active, a:focus {
 
 #top_nav p {
   margin: 0;
+}
+
+#user_status {
+  float:left;
+}
+
+#search_nav {
+  float:right;
+}
+
+#search_nav input{
+  position:relative;
+  top: -8px;
+  padding: 10px;
+  border-radius: 10px;
 }
 
 #left_column, #right_column {
@@ -141,19 +164,23 @@ a:hover, a:active, a:focus {
   width: 60%;
 }
 
+#footer_above {
+  padding-bottom: 25px;
+}
+
 #footer {
   background-image: url('layout/footer.png');
   background-repeat: no-repeat;
-  padding-top: 25px;
-  height: 75px;
+  height: 100px;
   width: 900px;
-  position: relative;
+  position: absolute;
   bottom: 0;
 }
 
 #footer p {
   font-size: 0.83em;
   text-align: center;
+  padding-top: 2em;
 }
 
 /* Miscellaneous */

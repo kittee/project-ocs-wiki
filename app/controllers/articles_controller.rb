@@ -1,7 +1,11 @@
 class ArticlesController < ApplicationController
   
   def index
-    @articles = Article.all
+    if params[:search] != nil && params[:search].size > 0
+      @articles = Article.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @articles = Article.all
+    end
   end
   
   def create
@@ -25,6 +29,13 @@ class ArticlesController < ApplicationController
   def edit
     authorize
     @article = Article.find(params[:id])
+    
+    if @article.locked && !current_user.admin
+      @content = @article.updates.last.content
+      @error="Article is locked. You cannot edit at this time."
+      render :show
+    end
+    
     @update = @article.updates.last.dup
   end
   
