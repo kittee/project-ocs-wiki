@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   end
   
   def create
+    authorize
     # raise(params.to_s)
     @article = Article.new(params[:article])
     
@@ -16,22 +17,24 @@ class ArticlesController < ApplicationController
   end
   
   def new
+    authorize
     @article = Article.new()
     @update = @article.updates.build
   end
   
   def edit
+    authorize
     @article = Article.find(params[:id])
     @update = @article.updates.last.dup
   end
   
   def show
-    # raise(params.to_s)
     @article = Article.find(params[:id])
     @content = @article.updates.last.content
   end
   
   def update
+    authorize
     @article = Article.find(params[:id])
     
     if @article.update_attributes(params[:article])
@@ -42,6 +45,8 @@ class ArticlesController < ApplicationController
   end
   
   def destroy
+    authorize
+    admin
     Article.delete(params[:id])
     redirect_to(articles_path)
   end

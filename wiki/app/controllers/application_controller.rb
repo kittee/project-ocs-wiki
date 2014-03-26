@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
       redirect_to :new_login
     end
   end
-
+  
+  def admin
+    if !current_user.admin
+      redirect_to articles
+    end
+  end
+  
   private
   
   # Return either `nil` or a User object.
