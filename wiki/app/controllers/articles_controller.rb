@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  
   def index
     @articles = Article.all
   end
@@ -8,7 +9,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(params[:article])
     
     if @article.save
-      redirect_to(article_path(@article.id))
+      redirect_to(article_path(@article.slug))
     else
       render :new
     end
@@ -21,9 +22,11 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find(params[:id])
+    @update = @article.updates.last.dup
   end
   
   def show
+    # raise(params.to_s)
     @article = Article.find(params[:id])
     @content = @article.updates.last.content
   end
@@ -32,7 +35,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     
     if @article.update_attributes(params[:article])
-      redirect_to(article_path(params[:id]))
+      redirect_to(article_path(@article.slug))
     else
       render :edit
     end

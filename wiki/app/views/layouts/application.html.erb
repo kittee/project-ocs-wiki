@@ -16,7 +16,17 @@
   </div>
     
     <div id="content" class="clearfix">
-      <div id="top_nav"></div>
+      <div id="top_nav">
+        <% if current_user %>
+          <p>Welcome, <%= current_user.email %>! |
+          <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></p>
+        <% else %>
+          <p>
+            <%= link_to("Sign Up", :new_user) %> | 
+            <%= link_to("Log In", :new_login) %>
+          </p>
+        <% end %>
+      </div>
       
       <div id="left_column">
         <h1>Categories</h1>

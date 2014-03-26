@@ -115,6 +115,10 @@ a:hover, a:active, a:focus {
   border-radius: 25px;
 }
 
+#top_nav p {
+  margin: 0;
+}
+
 #left_column, #right_column {
   padding: 25px;
   border-radius: 25px;

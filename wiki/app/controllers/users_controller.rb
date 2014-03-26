@@ -35,4 +35,12 @@ class UsersController < ApplicationController
     redirect_to(:root)
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    
+    @user.delete
+    
+    redirect_to(:users)
+  end
+
 end
