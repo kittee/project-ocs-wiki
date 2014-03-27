@@ -1,3 +1,6 @@
 <h1>Edit Article</h1>
 
 <%= render :partial => "form" %>
+<% if current_user.admin %>
+  <%= render :partial => "rollback" %>
+<% end %>

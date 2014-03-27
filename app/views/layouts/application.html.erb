@@ -11,8 +11,8 @@
 <div id="container">
 
   <div id="header">
-    <img src="/assets/layout/OCS_star_75x75.png" width="75px" height="75px" alt="Omaha Code School Star" />
-    <h1>Omaha <span style="font-family: Signika-Semibold, sans-serif;">Code</span> School Wiki</h1>
+    <a href="/"><img src="/assets/layout/OCS_star_75x75.png" width="75px" height="75px" alt="Omaha Code School Star" />
+    <h1>Omaha <span style="font-family: Signika-Semibold, sans-serif;">Code</span> School Wiki</h1></a>
   </div>
     
     <div id="content" class="clearfix">
@@ -43,7 +43,7 @@
         <h1>Categories</h1>
         <ul>
           <% Category.all.each do |c| %>
-            <li><a href="#"><%= c.name %></a></li>
+            <li><a href="articles?cat=<%= c.name %>"><%= c.name %></a></li>
           <% end %>
         </ul>
       </div>
@@ -59,7 +59,8 @@
         <%= yield %>
       </div>
     </div>
-    
+  <div id="footer_above"></div>
+  
   <div id="footer">
     <p>Created by Cara Heacock, Matt Hova, and Andy von Dohren as a project for Omaha Code School.<br />
 The Omaha Code School Wiki is not officially affiliated with Omaha Code School other than the developers being students there.</p>

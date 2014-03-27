@@ -5,4 +5,8 @@ class Update < ActiveRecord::Base
   belongs_to :user
 
   validates :content, :presence => true
+  
+  def username
+    user.username + " -- " + user.created_at.to_s
+  end
 end

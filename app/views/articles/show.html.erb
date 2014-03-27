@@ -1,13 +1,25 @@
+<% if @error %>
+  <h2 class="error"><%= @error %></h2>
+<% end %>
+
 <h1><%= @article.title %></h1>
+
 <h3>Categories: 
   <% @article.categories.each do |cat| %>
     <%= cat.name %>
   <% end %>
 </h3>
 <p><%= markdown(@content) %></p>
+
+<h5>Contributing Users</h5>
+<p><%= @users.join(", ") %></p>
 <% if current_user %>
   <p>
-    <%= link_to("Edit", edit_article_path(@article.id)) %>
+    <% if !@article.locked || current_user.admin %>
+      <%= link_to("Edit", edit_article_path(@article.id)) %>
+    <% else %>
+      Article is LOCKED
+    <% end %>
     <% if current_user.admin %>
     | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
     <% end %>

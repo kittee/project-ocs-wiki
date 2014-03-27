@@ -1,0 +1,7 @@
+<h1>Rollback Article</h1>
+<%= form_for @article, :url => rollback_article_path, :method => :post do |update| %>
+  <p>
+    <%= collection_select(:update, :update, Update.all, :content, :username) %>
+    <%= update.submit :value => "Rollback" %>
+  </p>
+<% end %>

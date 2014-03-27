@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20140326223624) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "slug"
+    t.boolean  "locked"
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug"
