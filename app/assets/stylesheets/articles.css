@@ -1,3 +1,11 @@
-#articles p{
+#articles h1, #articles h2, #articles h3, #articles h4, #articles h5, #articles h6 {
+  color: #000;
+}
 
+#articles h1 {
+  border-bottom: solid 3px #999;
+}
+
+#articles h2 {
+  border-bottom: solid 2px #999;
 }
