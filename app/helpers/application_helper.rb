@@ -1,9 +1,9 @@
 module ApplicationHelper
   def pluralize(number)
-    if number > 1
-      "s"
-    else
+    if number == 1
       ""
+    else
+      "s"
     end
   end
 end

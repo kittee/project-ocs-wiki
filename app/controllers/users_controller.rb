@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
   
   def edit    
-    if current_user.username == params[:id]
+    if current_user.username == params[:id] || current_user.admin
       @user = User.find(params[:id])
     else
       redirect_to(:root)
@@ -51,7 +51,12 @@ class UsersController < ApplicationController
   
   def deactivate
     @user = User.find(params[:id])
-    puts @user
-    puts params
+    # @user.update_attributes(params[])
   end
+
+  def activate
+    @user = User.find(params[:id])
+    # @user.update_attributes(params[])
+  end
+
 end
