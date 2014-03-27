@@ -42,7 +42,8 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if current_user.id = @user.id
-      # session[:user_id] = nil
+      puts "why are you here!!!!"
+      session[:user_id] = nil
     end
     @user.delete
     

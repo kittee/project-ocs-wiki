@@ -4,12 +4,12 @@
 <br>
 <% if current_user.username == params[:id] || current_user.admin %>
   <% if @user.inactive %>
-    <form action = "/users/<%= params[:id] %>/activate" method = "post">
-      <input type = "submit" value = "Activate User">
-    </form>
-  <% else %>
-    <form action = "/users/<%= params[:id] %>/deactivate" method = "post">
-      <input type = "submit" value = "Deactivate User">
-    </form>
+    <%= form_tag(activate_user_path, method: "post") do %>
+      <%= submit_tag("Activate User") %>
+    <% end %>
+  <% else%>
+    <%= form_tag(deactivate_user_path, method: "post") do %>
+      <%= submit_tag("Deactivate User") %>
+    <% end %>
   <% end %>
 <% end %>
