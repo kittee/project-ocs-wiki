@@ -1,3 +1,7 @@
+<% if @error %>
+  <h2 class="error"><%= @error %></h2>
+<% end %>
+
 <h1><%= @article.title %></h1>
 <div id="articles">
   <h5>Categories: 
@@ -5,12 +9,16 @@
       <%= cat.name %>
     <% end %>
   </h5>
-  <p><%= markdown(@content) %></p>
-  <% if current_user %>
-    <p>
+<p><%= markdown(@content) %></p>
+<% if current_user %>
+  <p>
+    <% if !@article.locked || current_user.admin %>
       <%= link_to("Edit", edit_article_path(@article.id)) %>
-      <% if current_user.admin %>
-      | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
+    <% else %>
+      Article is LOCKED
+    <% end %>
+    <% if current_user.admin %>
+    | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
       <% end %>
     </p>
   <% end %>

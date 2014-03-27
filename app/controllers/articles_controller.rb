@@ -29,6 +29,13 @@ class ArticlesController < ApplicationController
   def edit
     authorize
     @article = Article.find(params[:id])
+    
+    if @article.locked && !current_user.admin
+      @content = @article.updates.last.content
+      @error="Article is locked. You cannot edit at this time."
+      render :show
+    end
+    
     @update = @article.updates.last.dup
   end
   
@@ -46,6 +53,14 @@ class ArticlesController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def rollback
+    # raise(params.to_s)
+    authorize
+    admin
+    update = Update.create({:article_id => params[:id], :user_id => current_user.id, :content => params[:update][:update]})
+    redirect_to(article_path(params[:id]))
   end
   
   def destroy
