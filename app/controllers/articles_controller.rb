@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
-  
+  before_filter :revoke
+
   def index
     if params[:search] != nil && params[:search].size > 0
       @title = "Results for '#{params[:search]}'"

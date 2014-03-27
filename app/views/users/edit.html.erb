@@ -1,13 +1,17 @@
 <h1>Edit User Info</h1>
 
 <%= render :partial => "form" %>
-
+<br>
 <% if current_user.username == params[:id] || current_user.admin %>
   <p>
-    <% if @user.inactive %>
-      <%= link_to("Activate User", user_path(@user.username), :method => :activate) %>
-    <% else %>
-      <%= link_to("Deactive User", user_path(@user.username), :method => :deactivate) %>
+  <% if @user.inactive %>
+    <%= form_tag(activate_user_path, method: "post") do %>
+      <%= submit_tag("Activate User") %>
     <% end %>
+  <% else%>
+    <%= form_tag(deactivate_user_path, method: "post") do %>
+      <%= submit_tag("Deactivate User") %>
+    <% end %>
+  <% end %>
   </p>
 <% end %>
