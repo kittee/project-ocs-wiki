@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  
 
   def authorize
     if current_user.nil?
@@ -13,6 +14,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def revoke
+    if current_user != nil && current_user.inactive
+      session[:user_id] = nil
+      redirect_to :root
+    end
+  end
+    
   private
   
   # Return either `nil` or a User object.

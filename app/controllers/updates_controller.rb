@@ -1,5 +1,5 @@
 class UpdatesController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :revoke
   
   def index
     @updates = Update.all

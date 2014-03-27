@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_filter :revoke
+  
   def index
     @users = User.all
   end
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def edit    
+  def edit
     if current_user.username == params[:id] || current_user.admin
       @user = User.find(params[:id])
     else
@@ -42,7 +43,6 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if current_user.id = @user.id
-      puts "why are you here!!!!"
       session[:user_id] = nil
     end
     @user.delete
