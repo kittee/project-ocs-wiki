@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_filter :revoke
+  
   def index
     @users = User.all
   end
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def edit    
+  def edit
     if current_user.username == params[:id] || current_user.admin
       @user = User.find(params[:id])
     else
@@ -51,12 +52,16 @@ class UsersController < ApplicationController
   
   def deactivate
     @user = User.find(params[:id])
-    # @user.update_attributes(params[])
+    @user.update_attribute(:inactive, "true")
+    
+    redirect_to(:root)
   end
 
   def activate
     @user = User.find(params[:id])
-    # @user.update_attributes(params[])
+    @user.update_attribute(:inactive, "false")
+    
+    redirect_to(:root)
   end
 
 end
