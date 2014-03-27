@@ -3,6 +3,7 @@
 <%= render :partial => "form" %>
 <br>
 <% if current_user.username == params[:id] || current_user.admin %>
+  <p>
   <% if @user.inactive %>
     <%= form_tag(activate_user_path, method: "post") do %>
       <%= submit_tag("Activate User") %>
@@ -12,4 +13,5 @@
       <%= submit_tag("Deactivate User") %>
     <% end %>
   <% end %>
+  </p>
 <% end %>

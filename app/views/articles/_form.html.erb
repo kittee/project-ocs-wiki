@@ -6,7 +6,7 @@
 
 <%= form_for @article do |article| %>
   <p>
-    <%= article.label :title %>
+    <%= article.label :title %><br />
     <%= article.text_field :title %>
   </p>
   <% if current_user.admin %>
@@ -16,13 +16,14 @@
     </p>
   <% end %>
   <p>
+    <label>Categories:</label><br />
     <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
   </p>
   <%= article.fields_for :updates, @update do |update| %>
     <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>
     <p>
-      <%= update.label :content %>
+      <%= update.label :content %><br />
       <%= update.text_area :content%>
     </p>
   <% end %>

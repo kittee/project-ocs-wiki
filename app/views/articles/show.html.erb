@@ -3,12 +3,12 @@
 <% end %>
 
 <h1><%= @article.title %></h1>
-
-<h3>Categories: 
-  <% @article.categories.each do |cat| %>
-    <%= cat.name %>
-  <% end %>
-</h3>
+<div id="articles">
+  <h5>Categories: 
+    <% @article.categories.each do |cat| %>
+      <%= cat.name %>
+    <% end %>
+  </h5>
 <p><%= markdown(@content) %></p>
 
 <h5>Contributing Users</h5>
@@ -22,6 +22,7 @@
     <% end %>
     <% if current_user.admin %>
     | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
-    <% end %>
-  </p>
-<% end %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

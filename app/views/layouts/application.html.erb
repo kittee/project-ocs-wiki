@@ -15,21 +15,21 @@
     <h1>Omaha <span style="font-family: Signika-Semibold, sans-serif;">Code</span> School Wiki</h1></a>
   </div>
     
-    <div id="content" class="clearfix">
+  <div id="content" class="clearfix">
       <div id="top_nav">
         <div id="user_status">
-          <% if current_user %>
-            <p>Welcome, <%= current_user.email %>! |
-          <%= link_to("Create New Article", :new_article) %> |
-          <%= link_to("Edit Profile", edit_user_path(current_user.username))%> |
-          <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %>
-          </p>
-          <% else %>
-            <p>
+          <p>
+            <% if current_user %>
+              Hi, <%= link_to(current_user.fname, user_path(current_user.username)) %>! |
+              <%= link_to("Create New Article", :new_article) %> |
+              <%= link_to("Log Out", login_path(current_user.id), :method => :delete) %> |
+            <% else %>
               <%= link_to("Sign Up", :new_user) %> | 
               <%= link_to("Log In", :new_login) %> |
-            </p>
-          <% end %>
+              <%= link_to("Create New Article", :new_article) %> |
+            <% end %>
+            <%= link_to("Home", :root)%>
+          </p>
         </div>
         <div id="search_nav">
           <form name="search" action="/articles" method="get">
@@ -40,25 +40,37 @@
       </div>
       
       <div id="left_column">
-        <h1>Categories</h1>
-        <ul>
-          <% Category.all.each do |c| %>
-            <li><a href="articles?cat=<%= c.name %>"><%= c.name %></a></li>
-          <% end %>
-        </ul>
+        <% if current_user %>
+          <div class="left_column_section">
+            <h2>
+              <% if current_user.admin%>
+                Admin
+              <% else %>
+                User
+              <% end %>
+            </h2>
+            <ul>
+              <li><%= link_to("View Profile", user_path(current_user.username))%></li>
+              <li><%= link_to("Edit Profile", edit_user_path(current_user.username)) %></li>
+              <li><%= link_to("Log Out", login_path(current_user.id), :method => :delete) %></li>
+            </ul>
+          </div>
+        <% end %>
+        <div class="left_column_section">
+          <h2>Categories</h2>
+          <ul>
+            <% Category.all.each do |c| %>
+              <li><a href="/articles?cat=<%= c.name %>"><%= c.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
       
       <div id="right_column">
-        <!-- <h1>Header 1</h1>
-        <h2>Header 2</h2>
-        <h3>Header 3</h3>
-        <h4>Header 4</h4>
-        <h5>Header 5</h5>
-        <h6>Header 6</h6>
-        <p><a href="#">Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit. Curabitur scelerisque justo quis urna rhoncus tincidunt. In auctor neque mi, a rhoncus diam bibendum at. Nullam sit amet ipsum in arcu dictum posuere ut nec ante. Nulla quis elit ac enim vehicula rhoncus. Cras rutrum augue porta, commodo enim in, vestibulum libero. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p> -->
         <%= yield %>
       </div>
     </div>
+  
   <div id="footer_above"></div>
   
   <div id="footer">
