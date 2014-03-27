@@ -1,5 +1,5 @@
 <h1><%= @user.name %></h1>
-<% if current_user.username == params[:id] || current_user.admin %>
+<% if current_user && (current_user.username == params[:id]  || current_user.admin) %>
   <p>
   <%= link_to("Edit User Info", edit_user_path(@user.username)) %>
   </p>
