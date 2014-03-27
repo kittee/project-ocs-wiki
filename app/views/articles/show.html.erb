@@ -1,15 +1,17 @@
 <h1><%= @article.title %></h1>
-<h3>Categories: 
-  <% @article.categories.each do |cat| %>
-    <%= cat.name %>
-  <% end %>
-</h3>
-<p><%= markdown(@content) %></p>
-<% if current_user %>
-  <p>
-    <%= link_to("Edit", edit_article_path(@article.id)) %>
-    <% if current_user.admin %>
-    | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
+<div id="articles">
+  <h5>Categories: 
+    <% @article.categories.each do |cat| %>
+      <%= cat.name %>
     <% end %>
-  </p>
-<% end %>
+  </h5>
+  <p><%= markdown(@content) %></p>
+  <% if current_user %>
+    <p>
+      <%= link_to("Edit", edit_article_path(@article.id)) %>
+      <% if current_user.admin %>
+      | <%= link_to("Delete", article_path(@article.id), :method => :delete) %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
