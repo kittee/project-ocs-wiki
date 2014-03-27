@@ -154,8 +154,27 @@ a:hover, a:active, a:focus {
   width: 25%;
 }
 
-#left_column h1, #left_column li, #left_column a {
+.left_column_section {
+  background-color: rgba(0, 120, 173, 0.5);
+  padding: 25px;
+  border-radius: 25px;
+  margin-bottom: 25px;
+}
+
+.left_column_section:last-child {
+  margin-bottom: 0;
+}
+
+#left_column h2, #left_column li, #left_column a {
   color: #fff;
+}
+
+#left_column h2 {
+  margin-top: 0;
+}
+
+#left_column ul {
+  padding-left: 10px;
 }
 
 #right_column {

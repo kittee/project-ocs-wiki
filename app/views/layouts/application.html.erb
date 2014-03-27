@@ -37,12 +37,29 @@
       </div>
       
       <div id="left_column">
-        <h1>Categories</h1>
-        <ul>
-          <% Category.all.each do |c| %>
-            <li><a href="#"><%= c.name %></a></li>
-          <% end %>
-        </ul>
+        <% if current_user %>
+          <div class="left_column_section">
+            <h2>
+              <% if current_user.admin%>
+                Admin
+              <% else %>
+                User
+              <% end %>
+            </h2>
+            <ul>
+              <li><%= link_to("View Profile", user_path(current_user.username))%></li>
+              <li><%= link_to("Edit Profile", edit_user_path(current_user.username)) %></li>
+            </ul>
+          </div>
+        <% end %>
+        <div class="left_column_section">
+          <h2>Categories</h2>
+          <ul>
+            <% Category.all.each do |c| %>
+              <li><a href="#"><%= c.name %></a></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
       
       <div id="right_column">
