@@ -42,6 +42,11 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @content = @article.updates.last.content
+    @users = []
+    @article.updates.each do |u|
+      @users << u.user.username
+    end
+    @users.uniq!
   end
   
   def update
