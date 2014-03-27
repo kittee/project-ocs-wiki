@@ -59,7 +59,7 @@
           <h2>Categories</h2>
           <ul>
             <% Category.all.each do |c| %>
-              <li><a href="#"><%= c.name %></a></li>
+              <li><a href="/articles?cat=<%= c.name %>"><%= c.name %></a></li>
             <% end %>
           </ul>
         </div>
