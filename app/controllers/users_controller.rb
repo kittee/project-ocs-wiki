@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     if current_user.id = @user.id
-      session[:user_id] = nil
+      # session[:user_id] = nil
     end
     @user.delete
     
@@ -51,12 +51,16 @@ class UsersController < ApplicationController
   
   def deactivate
     @user = User.find(params[:id])
-    # @user.update_attributes(params[])
+    @user.update_attribute(:inactive, "true")
+    
+    redirect_to(:root)
   end
 
   def activate
     @user = User.find(params[:id])
-    # @user.update_attributes(params[])
+    @user.update_attribute(:inactive, "false")
+    
+    redirect_to(:root)
   end
 
 end
