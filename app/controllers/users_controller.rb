@@ -12,8 +12,12 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
-  def edit
-    @user = User.find(params[:id])
+  def edit    
+    if current_user.username == params[:id] || current_user.admin
+      @user = User.find(params[:id])
+    else
+      redirect_to(:root)
+    end
   end
 
   def create
@@ -37,10 +41,22 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    
+    if current_user.id = @user.id
+      session[:user_id] = nil
+    end
     @user.delete
     
     redirect_to(:users)
+  end
+  
+  def deactivate
+    @user = User.find(params[:id])
+    # @user.update_attributes(params[])
+  end
+
+  def activate
+    @user = User.find(params[:id])
+    # @user.update_attributes(params[])
   end
 
 end

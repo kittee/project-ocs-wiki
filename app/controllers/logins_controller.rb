@@ -7,6 +7,7 @@ class LoginsController < ApplicationController
     
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      session[:username] = user.username
       redirect_to :root
     else
       redirect_to("/logins/new?invalid_password=true&email=#{params[:email]}")
