@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
   
   def revoke
-    if current_user != nil && current_user.inactive
+    if current_user && current_user.inactive
       session[:user_id] = nil
       redirect_to :root
     end
