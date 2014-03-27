@@ -16,7 +16,7 @@
     </p>
   <% end %>
   <p>
-    Categories:<br />
+    <label>Categories:</label><br />
     <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
   </p>

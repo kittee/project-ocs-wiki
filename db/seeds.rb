@@ -7,16 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Category.create([
-  { name: "person" },
-  { name: "inside_joke" },
-  { name: "student" },
-  { name: "teacher" },
-  { name: "mentor" },
-  { name: "supporting_employer" },
   { name: "business" },
-  { name: "location" },
   { name: "coding_language" },
-  { name: "miscellaneous" }
+  { name: "inside_joke" },
+  { name: "location" },
+  { name: "mentor" },
+  { name: "miscellaneous" },
+  { name: "person" },
+  { name: "project" },
+  { name: "student" },
+  { name: "supporting_employer" },
+  { name: "teacher" }
 ])
 
 cara = User.create(
