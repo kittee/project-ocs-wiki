@@ -75,6 +75,10 @@ a:hover, a:active, a:focus {
   text-decoration: underline;
 }
 
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: #e21b23;
+}
+
 /* Layout stuff */
 
 #container {
@@ -212,6 +216,14 @@ input[type="submit"] {
   font-size: 1.25em;
   padding: 10px;
   cursor: pointer;
+}
+
+input[type="submit"]:active, input[type="submit"]:hover, input[type="submit"]:focus {
+  background-color: #e21b23;
+  -webkit-box-shadow: inset 5px 5px 12px -2px #ED8C90;
+  box-shadow: inset 5px 5px 20px -2px #ED8C90;
+  border-right: 2px solid #ED8C90;
+  border-bottom: 2px solid #ED8C90;
 }
 
 #footer_above {
