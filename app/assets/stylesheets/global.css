@@ -58,7 +58,7 @@ h6 {
   margin: 0.83em 0;
 }
 
-p, li, td, th {
+p, li, td, th, label, small {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   line-height: 1.5em;
 }
@@ -148,6 +148,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
   padding: 10px;
   border-radius: 10px;
   font-size: 1em;
+  display: inline;
+  margin-bottom: 0;
 }
 
 #left_column, #right_column {
@@ -193,12 +195,19 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 label {
   color: #0078ad;
+  display: block;
 }
 
-input {
+input, select, textarea {
   font-size: 1em;
   padding: 5px;
   border-radius: 5px;
+  display: block;
+  margin-bottom: 1.5em;
+}
+
+textarea {
+  width: 100%;
 }
 
 input[type="submit"] {
@@ -216,6 +225,7 @@ input[type="submit"] {
   font-size: 1.25em;
   padding: 10px;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 input[type="submit"]:active, input[type="submit"]:hover, input[type="submit"]:focus {
@@ -224,6 +234,10 @@ input[type="submit"]:active, input[type="submit"]:hover, input[type="submit"]:fo
   box-shadow: inset 5px 5px 20px -2px #ED8C90;
   border-right: 2px solid #ED8C90;
   border-bottom: 2px solid #ED8C90;
+}
+
+label[for="article_locked"], input[type="checkbox"] {
+  display: inline;
 }
 
 #footer_above {
