@@ -31,6 +31,3 @@ en:
           attributes:
             title:
               invalid: " may only contain letters, numbers, and spaces."
-          updates:
-            attributes:
-              blank: "asdfhjk"
