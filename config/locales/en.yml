@@ -3,3 +3,31 @@
 
 en:
   hello: "Hello world"
+
+# config/locales/en.yml
+en:
+  activerecord:
+    attributes:
+      user:
+        password_digest: "Password"
+        fname: "First Name"
+        lname: "Last Name"
+      article:
+        title: "Title"
+      updates:
+        content: "Article"
+
+    errors:
+      models:
+        user:
+          attributes:
+            password_digest:
+              blank: "is required. Really get creative with it."
+            lname:
+              blank: "is required. Who do you think you are, Prince?"
+            fname:
+              blank: "is required."
+        article:
+          attributes:
+            title:
+              invalid: "may only contain letters, numbers, and spaces."
