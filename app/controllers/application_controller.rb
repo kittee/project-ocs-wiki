@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
     options = {
       filter_html:     true,
       hard_wrap:       true, 
-      link_attributes: { rel: 'nofollow', target: "_blank" },
+      link_attributes: { rel: 'nofollow' },
       space_after_headers: true, 
       fenced_code_blocks: true
     }
