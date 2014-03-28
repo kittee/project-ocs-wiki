@@ -3,8 +3,10 @@ Wiki::Application.routes.draw do
   resources :users
   resources :logins
   post '/articles/:id/rollback', to: 'articles#rollback', as: 'rollback_article'
-  post '/users/:id/deactivate', to: 'users#deactivate', as: 'deactivate_user' 
-  post '/users/:id/activate', to: 'users#activate', as: 'activate_user' 
+  post '/users/:id/deactivate', to: 'users#deactivate', as: 'deactivate_user'
+  post '/users/:id/activate', to: 'users#activate', as: 'activate_user'
+  
+  resources :categories
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

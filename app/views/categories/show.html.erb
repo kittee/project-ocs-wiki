@@ -1,0 +1,14 @@
+<h1><%= @category.name %></h1>
+
+<p>
+  <%= link_to("Edit", edit_category_path(@category.id)) %> |
+  <%= link_to("Delete", category_path(@category.id), :method => :delete) %>
+</p>
+
+<h3>Related Articles:</h3>
+
+<ul>
+  <% @category.articles.each do |a| %>
+    <li><%= link_to(a.title, article_path(a.slug))%></li>
+  <% end %>
+</ul>
