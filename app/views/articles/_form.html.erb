@@ -24,7 +24,8 @@
     <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>
     <p>
       <%= update.label :content %><br />
-      <%= update.text_area :content%>
+      <small>Content can be written in Markdown syntax. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Click here for a style guide.</a></small><br />
+      <%= update.text_area :content, :cols => "70", :rows => "10"%>
     </p>
   <% end %>
   <%= article.submit %>
