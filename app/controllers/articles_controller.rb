@@ -4,13 +4,13 @@ class ArticlesController < ApplicationController
   def index
     if params[:search] != nil && params[:search].size > 0
       @title = "Results for '#{params[:search]}'"
-      @articles = Article.where("title LIKE ?", "%#{params[:search]}%")
+      @articles = Article.where("title LIKE ?", "%#{params[:search]}%").order('updated_at DESC')
     elsif params[:cat] != nil
       @title = "Category '#{params[:cat]}'"
-      @articles = Category.find_by_name(params[:cat]).articles
+      @articles = Category.find_by_name(params[:cat]).articles.order('updated_at DESC')
     else
       @title = "All Articles"
-      @articles = Article.all
+      @articles = Article.order('updated_at DESC')
     end
   end
   
