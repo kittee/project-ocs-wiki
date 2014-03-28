@@ -63,7 +63,7 @@
         <div class="left_column_section">
           <h2>Categories</h2>
           <ul>
-            <% Category.all.each do |c| %>
+            <% Category.order('name').each do |c| %>
               <li><a href="/articles?cat=<%= c.name %>"><%= c.name %></a></li>
             <% end %>
           </ul>
