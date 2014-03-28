@@ -5,28 +5,24 @@
 <% end %>
 
 <%= form_for @article do |article| %>
-  <p>
-    <%= article.label :title %><br />
+
+    <%= article.label :title %>
     <%= article.text_field :title %>
-  </p>
+
   <% if current_user.admin %>
-    <p>
       <%= article.label :locked %>
       <%= article.check_box :locked %>
-    </p>
   <% end %>
-  <p>
-    <label>Categories:</label><br />
+
+    <label>Categories:</label>
     <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
-  </p>
+
   <%= article.fields_for :updates, @update do |update| %>
     <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>
-    <p>
-      <%= update.label :content %><br />
-      <small>Content can be written in Markdown syntax. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Click here for a style guide.</a></small><br />
-      <%= update.text_area :content, :cols => "70", :rows => "10"%>
-    </p>
+      <%= update.label :content %>
+      <small>Content can be written in Markdown syntax. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Click here for a style guide.</a></small>
+      <%= update.text_area :content, :rows => "10"%>
   <% end %>
   <%= article.submit %>
 <% end %>

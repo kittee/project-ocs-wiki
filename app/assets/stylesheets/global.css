@@ -58,7 +58,7 @@ h6 {
   margin: 0.83em 0;
 }
 
-p, li, td, th, label {
+p, li, td, th, label, small {
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   line-height: 1.5em;
 }
@@ -198,12 +198,16 @@ label {
   display: block;
 }
 
-input {
+input, select, textarea {
   font-size: 1em;
   padding: 5px;
   border-radius: 5px;
   display: block;
   margin-bottom: 1.5em;
+}
+
+textarea {
+  width: 100%;
 }
 
 input[type="submit"] {
@@ -230,6 +234,10 @@ input[type="submit"]:active, input[type="submit"]:hover, input[type="submit"]:fo
   box-shadow: inset 5px 5px 20px -2px #ED8C90;
   border-right: 2px solid #ED8C90;
   border-bottom: 2px solid #ED8C90;
+}
+
+label[for="article_locked"], input[type="checkbox"] {
+  display: inline;
 }
 
 #footer_above {
