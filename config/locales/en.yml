@@ -30,4 +30,4 @@ en:
         article:
           attributes:
             title:
-              invalid: " may only contain letters, numbers, and spaces."
+              invalid: "may only contain letters, numbers, and spaces."
