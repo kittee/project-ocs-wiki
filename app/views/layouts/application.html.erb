@@ -71,6 +71,12 @@
       </div>
       
       <div id="right_column">
+        <% if flash[:notice] || flash[:alert] %>
+          <div class="flash">
+            <p class="notice"><%= flash[:notice] %></p>
+            <p class="alert"><%= flash[:alert] %></p>
+          </div>
+        <% end %>
         <%= yield %>
       </div>
     </div>

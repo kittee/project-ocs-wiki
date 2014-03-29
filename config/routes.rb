@@ -6,7 +6,8 @@ Wiki::Application.routes.draw do
   post '/articles/:id/rollback', to: 'articles#rollback', as: 'rollback_article'
   post '/users/:id/deactivate', to: 'users#deactivate', as: 'deactivate_user'
   post '/users/:id/activate', to: 'users#activate', as: 'activate_user'
-  get '/users/confirm/:key', to: 'users#confirm', as: 'users_confirm'
+  get '/users/confirm', to: 'users#please_confirm', as: 'please_confirm_user'
+  get '/users/confirm/:key', to: 'users#confirm', as: 'confirmed_user'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

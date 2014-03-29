@@ -73,7 +73,13 @@ class UsersController < ApplicationController
     if !@user.confirmed
       @user.update_attribute(:confirmed, true)
       session[:user_id] = @user.id # auto-login
+      flash[:notice] = "Account successfully confirmed"
+      redirect_to(:root)
+    elsif @user.confirmed
+      flash[:alert] = "Account has already been confirmed. Please log in."
+      redirect_to(:new_login)
     else
+      flash[:alert] = "Invalid Confirmation"
       redirect_to(:root)
     end
   end
