@@ -43,25 +43,32 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if current_user.id = @user.id
-      session[:user_id] = nil
-    end
-    @user.delete
-    
+    # @user = User.find(params[:id])
+    # if current_user.id = @user.id
+    #   session[:user_id] = nil
+    # end
+    # @user.delete
+    flash[:alert] = "Accounts cannot be removed, only deactivated."
     redirect_to(:users)
   end
   
   def deactivate
-    @user = User.find(params[:id])
-    @user.update_attribute(:inactive, "true")
+    user = User.find(params[:id])
+    user.update_attribute(:inactive, "true")
+    
+    if current_user.id == user.id
+      session[:user_id] = nil
+      flash[:notice] = "Your account has been deactivated. Sorry to see you go."
+    else
+      flash[:notice] = "#{user.username}'s account has been deactivated."
+    end
     
     redirect_to(:root)
   end
 
   def activate
-    @user = User.find(params[:id])
-    @user.update_attribute(:inactive, "false")
+    user = User.find(params[:id])
+    user.update_attribute(:inactive, "false")
     
     redirect_to(:root)
   end
