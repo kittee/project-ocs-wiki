@@ -11,10 +11,11 @@ class User < ActiveRecord::Base
   has_many :updates
   
   
-  validates :email, :uniqueness => true
+  validates :email, :uniqueness => true, :format => { :with => /.+@.+\..+/i }
   validates :fname, :presence => true
   validates :lname, :presence => true
   validates :username, :uniqueness => true, :format => { :with => /^[a-zA-Z0-9_]+$/ }
+  validates :confirm_key, :presence => true
   
   def name
     fname + " " + lname

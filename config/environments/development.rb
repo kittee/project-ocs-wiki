@@ -38,4 +38,15 @@ Wiki::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Email config
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'mail.livewirets.com',
+    port:                 587,
+    domain:               'livewirets.com',
+    user_name:            'ocs@livewirets.com',
+    password:             'Disney#1',
+    authentication:       'plain',
+    enable_starttls_auto: false  }
 end

@@ -23,9 +23,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.confirm_key = Digest::SHA1.hexdigest @user.email
     
     if @user.save
-      session[:user_id] = @user.id # "auto-login"
+      UserMailer.confirm_email(@user).deliver
+      # session[:user_id] = @user.id # "auto-login"
       
       redirect_to(:root)
     else
@@ -62,6 +64,18 @@ class UsersController < ApplicationController
     @user.update_attribute(:inactive, "false")
     
     redirect_to(:root)
+  end
+  
+  def confirm
+    @key = params[:key]
+    @user = User.find_by_confirm_key(@key)
+    
+    if !@user.confirmed
+      @user.update_attribute(:confirmed, true)
+      session[:user_id] = @user.id # auto-login
+    else
+      redirect_to(:root)
+    end
   end
 
 end
