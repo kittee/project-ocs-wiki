@@ -6,15 +6,22 @@ class LoginsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     
-    if !user.confirmed
-      redirect_to("/logins/confirm")
-    elsif user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      session[:username] = user.username
-      session[:inactive] = user.inactive
-      redirect_to :root
+    if user && user.authenticate(params[:password])
+      if !user.confirmed
+        flash[:notice] = "Account has not been confirmed. Please check your email."
+        redirect_to(:new_login)
+      elsif user.inactive
+        flash[:alert] = "Account has been disabled."
+        redirect_to(:new_login)
+      else
+        session[:user_id] = user.id
+        session[:username] = user.username
+        session[:inactive] = user.inactive
+        redirect_to :root
+      end
     else
-      redirect_to("/logins/new?invalid_password=true&email=#{params[:email]}")
+      flash[:notice] = "Invalid email address or password"
+      redirect_to(:new_login)
     end
   end
   
