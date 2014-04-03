@@ -43,11 +43,11 @@ Wiki::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     # TEMP, using email info from a domain I own to send email.
-    address:              'mail.livewirets.com',
-    port:                 587,
-    domain:               'livewirets.com',
-    user_name:            'ocs@livewirets.com',
-    password:             'ProjOCSw1k1',
-    authentication:       'plain',
+    address:              ENV['SMTP_ADDR'],
+    port:                 ENV['SMTP_PORT'],
+    domain:               ENV['SMTP_DOMAIN'],
+    user_name:            ENV['SMTP_USER'],
+    password:             ENV['SMTP_PASS'],
+    authentication:       ENV['SMTP_TYPE'],
     enable_starttls_auto: false  }
 end
