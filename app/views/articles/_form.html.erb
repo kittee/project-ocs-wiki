@@ -13,10 +13,11 @@
       <%= article.label :locked %>
       <%= article.check_box :locked %>
   <% end %>
-
-    <label>Categories:</label>
-    <%= collection_select(:article, :category_ids, Category.all, :id, :name,{:include_blank => 'None'},
+  <p>
+    <label>Categories:</label><br />
+    <%= collection_select(:article, :category_ids, Category.order('name ASC'), :id, :name,{:include_blank => 'None'},
     {:multiple => true, :name=>'article[category_ids][]',:selected => 0}) %>
+  </p>
 
   <%= article.fields_for :updates, @update do |update| %>
     <%= update.hidden_field :user_id, :value => "#{session[:user_id]}"  %>

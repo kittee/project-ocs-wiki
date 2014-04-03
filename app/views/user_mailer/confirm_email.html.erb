@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <!-- <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" /> -->
+    <title>Please confirm your account</title>
+  </head>
+  <body>
+    <h1>Welcome to Omaha Code School Wiki, <%= @user.name %></h1>
+    <p>
+      Thanks for joining our service! Please confirm your account by clicking the link below.
+    </p>
+    <p>
+      <a href="<%= @url %>" target="_blank"><%= @url %></a>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

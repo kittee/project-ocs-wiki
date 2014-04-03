@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  helper_method :current_user
+  helper_method :markdown
 
   def authorize
     if current_user.nil?
@@ -29,10 +31,6 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find(session[:user_id])
     end
   end
-  helper_method :current_user
-  
-  
-  helper_method :markdown
   
   def markdown(text)
     options = {

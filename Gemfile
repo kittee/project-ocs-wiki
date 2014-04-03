@@ -38,5 +38,4 @@ gem 'unicorn'
 # gem 'debugger'
 
 gem 'redcarpet'
-
 gem 'dotenv-rails', :groups => [:development, :test]
