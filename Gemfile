@@ -39,3 +39,5 @@ gem 'unicorn'
 
 gem 'redcarpet'
 gem 'dotenv-rails', :groups => [:development, :test]
+gem 'sunspot_rails'
+gem 'sunspot_solr'

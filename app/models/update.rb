@@ -1,5 +1,9 @@
 class Update < ActiveRecord::Base
   attr_accessible :article_id, :content, :user_id
+
+  searchable do
+    text :content
+  end
   
   belongs_to :article, :touch => true
   belongs_to :user
